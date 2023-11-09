@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Invome : Invome Admin  Bootstrap 5 Template" />
+	<meta property="og:title" content="Invome : Invome Admin  Bootstrap 5 Template" />
+	<meta property="og:description" content="Invome : Invome Admin  Bootstrap 5 Template" />
+	<meta property="og:image" content="https://invome.dexignlab.com/xhtml/social-image.png" />
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- PAGE TITLE HERE -->
+	<title>Invome Admin Dashboard</title>
+	
+	<!-- FAVICONS ICON -->
+	<link rel="shortcut icon" type="image/png" href="/static/images/favicon.png" />
+	<link rel="shortcut icon" type="image/png" href="/static/images/favicon.png" />
+    <link href="/static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="vh-100">
+    <div class="authincation h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-md-6">
+                    <div class="authincation-content">
+                        <div class="row no-gutters">
+                            <div class="col-xl-12">
+                                <div class="auth-form">
+									<div class="text-center mb-3">
+										<a href="/static/html/index.html"><img src="images/logo-full.png" alt=""></a>
+									</div>
+                                    <h4 class="text-center mb-4">登录</h4>
+                                    <form >
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>用户名或学号</strong></label>
+                                            <input id="user_id" name="user_id" type="email" class="form-control" >
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>密码</strong></label>
+                                            <input id="password" name="password"type="password" class="form-control" value="">
+                                        </div>
+                                        <div class="alert alert-danger alert-dismissible fade show" style="display: none" id="wrong_password">
+									<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+									<strong>错误!</strong> 密码错误或用户不存在.
+									<button type="button" class="btn-close" id="close_error" aria-label="btn-close">
+                                    </button>
+								</div>
+                                        <div class="row d-flex justify-content-between mt-4 mb-2">
+                                            <div class="mb-3">
+                                               <div class="form-check custom-checkbox ms-1">
+													<input type="checkbox" class="form-check-input" id="basic_checkbox_1">
+													<label class="form-check-label" for="basic_checkbox_1">记住密码</label>
+												</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <a href="/forgetpassword">忘记密码?</a>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="button" id="login_button" name="login_button" class="btn btn-primary btn-block">登录</button>
+                                        </div>
+                                    </form>
+                                    <div class="new-account mt-3">
+                                        <p>没有用户? <a class="text-primary" href="/register">点击注册</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="static/vendor/global/global.min.js"></script>
+    <script src="static/js/custom.min.js"></script>
+    <script src="static/js/dlabnav-init.js"></script>
+	<script src="static/js/styleSwitcher.js"></script>
+<script>
+    $("#login_button").click(function(){login();})
+    var login=function(){
+        var data={"action":"login"};
+        data.user_id=$("#user_id").val();
+        data.password=$("#password").val();
+        console.log(JSON.stringify(data));
+
+        $.post('verify_login/',data,function(json){
+            console.log(JSON.stringify(json))
+            if (json.code==0)
+            {
+                window.location.href="/index";
+            }
+            else if(json.code==1)
+            {
+                wrong_id_password=document.getElementById("wrong_password");
+                wrong_id_password.style.display="block";
+            }
+            else
+            {
+                alert("服务器出错了，联系一下管理员吧!");
+            }
+
+
+        })
+    };
+    $("#close_error").click(function(){
+        document.getElementById("wrong_password").style.display="none";
+    }
+    );
+
+</script>
+</body>
+</html>

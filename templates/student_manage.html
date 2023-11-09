@@ -1,0 +1,327 @@
+
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container-fluid">
+				<div class="row page-titles">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item active"><a href="javascript:void(0)">Table</a></li>
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Datatable</a></li>
+					</ol>
+                </div>
+                <!-- row -->
+
+
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title" style="float:left ">学生信息表</h4>
+
+                            <!-- ADD student-->
+                            <div class="bootstrap-modal" style="float:right ">
+
+                                    <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">添加学生</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalCenter">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">添加学生</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <div class="card-body">
+                                <div class="basic-form">
+                                    <form>
+
+                                        <div class="input-group input-group-lg">
+											<span class="input-group-text">姓名</span>
+                                            <input type="text" class="form-control" id="add_sname">
+                                        </div>
+                                        <div class="input-group input-group-lg">
+											<span class="input-group-text">学号</span>
+                                            <input type="text" class="form-control"id="add_sno">
+                                        </div>
+                                        <div class="input-group input-group-lg">
+											<span class="input-group-text">性别</span>
+                                            <input type="text" class="form-control" id="add_sgender">
+                                        </div>
+                                        <div class="input-group input-group-lg">
+											<span class="input-group-text">年龄</span>
+                                            <input type="text" class="form-control" id="add_sage">
+                                        </div>
+                                        <div class="input-group input-group-lg">
+											<span class="input-group-text">系别</span>
+                                            <input type="text" class="form-control" id="add_sdept">
+                                        </div>
+                                    </form>
+                                </div>
+                                </div>
+
+                                                  </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger light" data-bs-dismiss="modal" id="add_close">关闭</button>
+                                                    <button type="button" class="btn btn-primary" id="add_submit">提交</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+
+
+
+                                 <!-- Modify student-->
+                                <div class="bootstrap-modal">
+                                    <div style="display: none">
+                                    <button id="modify_button" type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModalCenter1">修改学生</button>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalCenter1">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">修改学生</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <div class="card-body">
+                                <div class="basic-form">
+                                    <form>
+
+                                        <div class="input-group input-group-lg">
+											<span class="input-group-text">姓名</span>
+                                            <input type="text" class="form-control" id="modify_sname">
+                                        </div>
+                                        <div class="input-group input-group-lg">
+											<span class="input-group-text">学号</span>
+                                            <input type="text" class="form-control"id="modify_sno">
+                                        </div>
+                                        <div class="input-group input-group-lg">
+											<span class="input-group-text">性别</span>
+                                            <input type="text" class="form-control" id="modify_sgender">
+                                        </div>
+                                        <div class="input-group input-group-lg">
+											<span class="input-group-text">年龄</span>
+                                            <input type="text" class="form-control" id="modify_sage">
+                                        </div>
+                                        <div class="input-group input-group-lg">
+											<span class="input-group-text">系别</span>
+                                            <input type="text" class="form-control" id="modify_sdept">
+                                        </div>
+                                    </form>
+                                </div>
+                                </div>
+
+                                                  </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger light" data-bs-dismiss="modal" id="modify_close">关闭</button>
+                                                    <button type="button" class="btn btn-primary" id="modify_submit">提交</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="table-responsive">
+                                    <table class="table table-responsive-md">
+
+                                        <thead>
+                                            <tr >
+                                                <th ><strong>姓名</strong></th>
+                                                <th><strong>学号</strong></th>
+                                                <th><strong>性别</strong></th>
+                                                <th><strong>年龄</strong></th>
+                                                <th><strong>系别</strong></th>
+                                                <th><strong>操作</strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="info_list" name="info_list" style="font-size: 15px">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+				</div>
+
+            </div>
+
+{% endblock %}
+{% block add_js %}
+    <script src="/static/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+
+ <script>
+     var getStudentRecordList=function(){
+		var data={};
+		$.post("/get_student_record/",data,function(json){
+			console.log(JSON.stringify(json));
+             if(json.code==0) {
+                 console.log("begin draw");
+                 			var list=json.stu_info;
+			var html="";
+				if(list!=undefined && list.length>0){
+					for(var i=0;i<list.length;i++){
+                        var record=list[i];
+                        html=html+"<tr>";
+                        html=html+"<td>";
+                        html=html+""+record.sname;
+                        html=html+"</td>";
+                        html=html+"<td>";
+                        html=html+""+record.sno;
+                        html=html+"</td>";
+                        html=html+"<td>";
+                        html=html+""+record.sgender;
+                        html=html+"</td>";
+                        html=html+"<td>";
+                        html=html+""+record.sage;
+                        html=html+"</td>";
+                        html=html+"<td>";
+                        html=html+""+record.sdept;
+                        html=html+"</td>";
+                        html=html+"<td>";
+                        html=html+"<div class=\"d-flex\">";
+                        html=html+"<a href=\"javascript:onModifyRecord("+'\''+record.sno+'\''+")\" class=\"btn btn-primary shadow btn-xs sharp me-1\" >";
+                        html=html+"<i class=\"fas fa-pencil-alt\">";
+                        html=html+"</i>";
+                        html=html+"</a>";
+                        html=html+"<a href=\"javascript:onDeleteRecord("+'\''+record.sno+'\''+")\" class=\"btn btn-danger shadow btn-xs sharp\">";
+                        html=html+"<i class=\"fa fa-trash\">";
+                        html=html+"</i>";
+                        html=html+"</a>";
+                        html=html+"</div>";
+                        html=html+"</td>";
+                        html=html+"</tr>";
+
+                    }
+                    $("#info_list").html(html);
+				}
+             }
+
+		})
+	};
+
+    getStudentRecordList();
+    var onDeleteRecord=function(sno){
+        if(confirm("您确定要删除这条记录吗？")) {
+            data = {"sno": sno}
+            $.post('/delete_student_record/', data, function (json) {
+                if (json.code == 0) {
+                    swal({ title: "Are you sure to delete ?", text: "You will not be able to recover this imaginary file !!", type: "warning", showCancelButton: !0, confirmButtonColor: "#DD6B55", confirmButtonText: "Yes, delete it !!", closeOnConfirm: !1 }, function () { swal("Deleted !!", "Hey, your imaginary file has been deleted !!", "success") });
+                   getStudentRecordList();
+                }
+                else {
+                    alert("删除失败");
+                }
+            })
+        }
+
+    };
+    $("#add_submit").click(function (){onAddRecord();})
+    var onAddRecord=function(){
+
+        var data={
+        };
+        data.sname=$("#add_sname").val();
+        data.sno=$("#add_sno").val();
+        data.sgender=$("#add_sgender").val();
+        data.sage=$("#add_sage").val();
+        data.sdept=$("#add_sdept").val();
+        console.log(JSON.stringify(data));
+        $.post('/add_student_record/',data,function (json){
+            if(json.code==0)
+            {
+                $("#add_close").click();
+                swal("添加成功", "", "success");
+
+                getStudentRecordList();
+            }
+            else
+            {
+                alert("出错了,添加失败!");
+            }
+        })
+    };
+   var submitModifyRecord=function(sno){
+
+            var data2={}
+
+            data2.or_sno=sno;
+            data2.sname=$("#modify_sname").val();
+            data2.sno=$("#modify_sno").val();
+            data2.sgender=$("#modify_sgender").val();
+            data2.sage=$("#modify_sage").val();
+            data2.sdept=$("#modify_sdept").val();
+            console.log(JSON.stringify(data2));
+            $.post('/modify_student_record/',data2,function(json2)
+            {
+                if(json2.code==0)
+                {
+
+                    $("#modify_close").click();
+                    swal("修改成功", "", "success");
+                    getStudentRecordList();
+
+
+
+                }
+                else
+                {
+                    alert("出错了!");
+                }
+
+            })
+
+        };
+    var onModifyRecord=function(sno){
+        var data={};
+        data.sno=sno;
+        $.post('/query_student_record/',data,function (json){
+
+         if (json.code==0)
+         {$("#modify_sname").val(json.sname);
+        $("#modify_sno").val(json.sno);
+        $("#modify_sgender").val(json.sgender);
+        $("#modify_sage").val(json.sage);
+        $("#modify_sdept").val(json.sdept);
+         }
+         else
+         {
+             alert("出错了~");
+         }
+
+        });
+
+        $("#modify_button").click();
+
+        $("#modify_submit").unbind("click");
+
+
+        $("#modify_submit").click(function (){
+            console.log("调用修改");
+            submitModifyRecord(sno);
+        })
+        console.log("repeat");
+
+    }
+
+
+    </script>
+{% endblock %}
