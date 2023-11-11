@@ -25,10 +25,12 @@ urlpatterns = [
     path('index/',views.index),
     path('student_manage/',views.stu_manage),
     path('verify_login/',login.verify_login),
+    path('verify_register/',login.verify_register),
     path('MyGoods/',views.MyGoods),
     path('MyOrders/',views.MyOrders),
     path('register/',views.register),
     path('forgetpassword/',views.forgetpassword),
+    path('sendCode/',login.send_register_code),
 
 
 
