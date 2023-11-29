@@ -26,7 +26,9 @@
     <link href="/static/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
 	<!-- Style css -->
     <link href="/static/css/style.css" rel="stylesheet">
+    {% block add_css%}
 
+{% endblock %}
 </head>
 <body>
 
@@ -911,7 +913,7 @@
 							<li><a href="/static/uc-lightgallery.html">Light Gallery</a></li>
                         </ul>
                     </li>
-                    <li><a href="widget-basic.html" class="" aria-expanded="false">
+                    <li><a href="/static/widget-basic.html" class="" aria-expanded="false">
 							<i class="fas fa-user-check"></i>
 							<span class="nav-text">Widget</span>
 						</a>
@@ -1010,8 +1012,6 @@
     <script src="/static/vendor/global/global.min.js"></script>
     <script src="/static/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="/static/js/plugins-init/sweetalert.init.js"></script>
-
-
 	<script src="/static/vendor/chart.js/Chart.bundle.min.js"></script>
 	<script src="/static/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 

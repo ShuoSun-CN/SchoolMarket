@@ -84,9 +84,9 @@
 
 
 											</span>
-											<div class="invoices">
+											<div class="invoices" id="good_market">
 												<h4>652</h4>
-												<span>Total Invoices</span>
+												<span>商品集市</span>
 											</div>
 										</div>
 									</div>
@@ -745,6 +745,9 @@
             }
 
         );
+        document.getElementById("good_market").onclick=function(){
+          window.location.href="/goodMarket";
+        };
         $("#goods_list").click(function(){
             var onGoodsList=function(){
                 window.location.href="/MyGoods"

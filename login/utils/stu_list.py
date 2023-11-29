@@ -4,8 +4,6 @@ import psycopg2
 from django.http import HttpResponse,JsonResponse
 from django.shortcuts import redirect,render
 from django.views.decorators.csrf import csrf_exempt
-
-
 def connect_db():
     try:
         conn=psycopg2.connect(database="postgres",user="postgres",password="123",host="localhost",port="5432")
